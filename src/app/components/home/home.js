@@ -18,7 +18,7 @@ class Home extends Component {
   }
 
   componentWillMount() {
-    this.props.actions.screenLoading()
+    this.props.actions.loadTitle();
     ArticleApi.getAllCategories().then(articleCategories => {
       this.setState({articleCategories:articleCategories});
     }).catch(error => {

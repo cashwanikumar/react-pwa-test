@@ -57,9 +57,10 @@ if (hot && typeof window !== "undefined") {
 }
 
 // Custom reducers
-let { reduxReducers, reduxInitialState, onPageChange } = customClient;
+let { reduxReducers, reduxInitialState, onPageChange, reduxMiddleware } = customClient;
 if (!reduxReducers) reduxReducers = null;
 if (!reduxInitialState) reduxInitialState = {};
+if (!reduxMiddleware) reduxMiddleware = [];
 
 // Provide onPageChange to globals
 global.onPageChange = onPageChange;
@@ -74,7 +75,7 @@ global.history = global.history || createHistory();
 // Create redux store
 global.store = global.store || configureStore({
   history: global.history,
-  
+  middleware  : reduxMiddleware,
   initialState: _.assignIn({}, {
     network: {
       state: window.navigator.onLine ? NETWORK_STATE_ONLINE: NETWORK_STATE_OFFLINE,

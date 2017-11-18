@@ -112,7 +112,8 @@
   "license": "ISC",
   "dependencies": {
     "opencollective": "^1.0.3",
-    "react-bootstrap": "^0.31.5"
+    "react-bootstrap": "^0.31.5",
+    "redux-thunk": "^2.2.0"
   },
   "collective": {
     "type": "opencollective",

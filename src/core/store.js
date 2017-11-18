@@ -21,10 +21,11 @@ export default function configureStore({
   middleware = [],
   reducers = {}
 }) {
+  console.log(middleware);
+
   // Add history middleware
   const historyMiddleware = routerMiddleware(history);
   middleware.push(historyMiddleware);
-  
   const store = createStore(createReducer(reducers), initialState, composeEnhancers(applyMiddleware(...middleware)));
   store.asyncReducers = reducers;
   return store;
