@@ -3,22 +3,22 @@ import ArticleListDiv from "../article/articleListDiv";
 // import * as styles from "./styles.css";
 import ArticleApi from '../../api/mockArticleApi';
 
-export default class Home extends Component {
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import * as helloActions from '../../actions/helloAction'
+
+
+class Home extends Component {
 
   constructor(props, context) {
     super(props, context);
     this.state = {
-      articleCategories: [
-        {
-          Categories:"",
-          title:"sachin",
-          id:"1"
-        }
-      ]
+      articleCategories: []
     };
   }
 
   componentWillMount() {
+    this.props.actions.screenLoading()
     ArticleApi.getAllCategories().then(articleCategories => {
       this.setState({articleCategories:articleCategories});
     }).catch(error => {
@@ -30,6 +30,7 @@ export default class Home extends Component {
     return (
       <div className="container">
         <div className="row">
+          {this.props.title}
           {this.state.articleCategories.map(articleCategory =>
                   <ArticleListDiv key={articleCategory.id} categoryId={articleCategory.id} articleCategoryTitle={articleCategory.title} />
           )}
@@ -39,3 +40,17 @@ export default class Home extends Component {
     );
   }
 }
+
+function mapStateToProps(state, ownProps) {
+  return {
+    title: state.test.title
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(helloActions, dispatch)
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
