@@ -12,12 +12,12 @@ export default class ArticleLists extends Component {
     return (
       <li style={marginStyle}>
         <div className="media">
-          <Link className={`${styles["media-left"]}`} to="/article/1">
-            <img alt="" src="images/post_img1.jpg" />
+          <Link className={`${styles["media-left"]}`}  to={'/article/' + this.props.article.id}>
+            <img alt="" src={this.props.article.featuredImage} />
           </Link>
           <div className={`${styles["media-body"]}`}>
-            <Link className={`${styles["media-left"]}`} to="/article/1">
-                Aliquam malesuada diam eget turpis varius 2. data
+            <Link className={`${styles["media-left"]}`} to={'/article/' + this.props.article.id}>
+              {this.props.article.title}
             </Link>
           </div>
         </div>

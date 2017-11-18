@@ -3,7 +3,7 @@ import ArticleLists from "./articleLists";
 import * as styles from "./article.css";
 
 export default class ArticleByCategory extends Component {
-  
+
   render() {
     return (
       <div className="col-lg-4 col-md-4 col-sm-4">

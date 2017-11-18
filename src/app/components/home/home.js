@@ -31,7 +31,7 @@ export default class Home extends Component {
       <div className="container">
         <div className="row">
           {this.state.articleCategories.map(articleCategory =>
-                  <ArticleListDiv key={articleCategory.id} articleCategory={articleCategory} />
+                  <ArticleListDiv key={articleCategory.id} categoryId={articleCategory.id} articleCategoryTitle={articleCategory.title} />
           )}
           <ArticleListDiv />
         </div>
